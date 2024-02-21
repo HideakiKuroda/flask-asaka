@@ -1,0 +1,5 @@
+HostName {user}.sakura.ne.jp
+User {user}
+Port 22
+UseKeychain yes
+IdentityFile ~/.ssh/id_ed25519_sakura

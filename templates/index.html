@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引船作業日報</title>
+    <!-- Tailwind CSSのCDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+            <!-- タブ -->
+            <ul class="flex border-b ml-52">
+              <li class="mr-1 tab" id="tab-make">
+                  <a class="bg-slate-300 inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#" onclick="changeTab('make_report','tab-make')">作業日報作成</a>
+              </li>
+              <li class="mr-1 tab" id="tab-list">
+                  <a class="bg-slate-300 inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#" onclick="changeTab('report_list','tab-list')">作成済みリスト</a>
+              </li>
+          </ul> 
+<div id="make_report"  class="content" style="display: block;">           
+    <div class="container mx-auto mt-5">
+        <h1 class="flex justify-center text-xl font-bold mb-4">引 船 作 業 日 報</h1>
+    </div>
+    <div>
+      {% if file_created %}
+        <div class="flex justify-center text-blue-400">{{ message }} <br> ファイル名: {{ new_filename }}</div>
+      {% else %}
+        <div class="flex justify-center text-red-500  font-bold">{{ message }}</div>
+      {% endif %}
+    </div>
+      <div class="mb-8">
+        <div class="container mx-auto mt-5 ml-5">
+		<form action="/create_report" method="post" id="myForm">	
+          <div class="flex justify-center items-center gap-4">
+            <div>
+              <label for="date">年月日:</label>
+              <input class="w-32 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" 
+              type="date" name="date" id="date" onchange="updateWeekday()"  value="{{ date }}">
+            </div>
+            <div>
+              <label for="weekday">曜日:</label>
+              <input class="w-12 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" type="text" name="weekday" id="weekday" readonly>
+            </div>
+            <div>
+              <label for="category">勤務:</label>
+              <select class="w-20 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" name="category" id="category" value="{{ category }}">
+                <option value="日勤">日勤</option>
+                <option value="当直">当直</option>
+                <option value="当直明け">当直明け</option>
+              </select>
+            </div>
+            <div>85</div>
+            <div>あさか丸</div>
+            <div>
+              <label for="person">船長:</label>
+              <select  class="w-28  border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" name="person" id="person">
+                <option value=""></option>
+              </select>
+            </div>
+			<button type="submit" class="mt-2 ml-20 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-red-400 dark:hover:bg-red-500 focus:outline-none dark:focus:ring-red-800">新規作成</button> 
+		 </form>
+		 </div>
+        </div> 
+		<div class="container mx-auto mt-5 ml-5">
+        </div>
+                <!-- その他のフィールドも同様に追加 -->
+                <div class="w-full lg:w-full mx-auto overflow-auto">
+                  <table class="m-4" style="width:95%; text-align: center; table-layout: fixed;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                  <!-- <table class="table-fixed w-full text-left whitespace-no-wrap hidden sm:table m-8"> -->
+                      <thead style="width:100%;display:block;">
+                          <tr style="display:flex;  width:1500px;">
+                          <th class="pr-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:20%;">船&nbsp;&nbsp;&nbsp;名</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:7%;">船席</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:5%;">作業別</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">予定時間</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">基&nbsp;地&nbsp;発</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">現&nbsp;場&nbsp;着</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">作業開始</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">作業終了</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:8%;">基&nbsp;地&nbsp;着</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:7%;">使用時間</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:5%;">相手TUG</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="width:5%;">証明<br>部数</th>
+                          </tr>
+                      </thead>
+                      <tbody style="width:100%;display:block;">
+                        <tr style="display:flex;  width:1500px;" class="mt-0">
+                          <td>1.</td>
+                          <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="text" name="shipname_1" id="shipname_1" readonly>
+                          </td>
+                          <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="text" name="berth_1" id="berth_1" readonly>
+                          </td>
+                          <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="text" name="details_1" id="details_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="schedule_1" id="schedule_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="departure_1" id="departure_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="onsite_1" id="onsite_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="start_1" id="start_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="end_1" id="end_1" readonly>
+                          </td>
+                          <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="arrival_1" id="arrival_1" readonly >
+                          </td>
+                          <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="time" name="usage_1" id="usage_1"  readonly>
+                          </td>
+                          <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="text" name="partner_1" id="partner_1" readonly>
+                          </td>
+                          <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                            <input style="width: 100%;" type="text" name="certificate_1" id="certificate_1" readonly>
+                          </td>
+                        </tr>
+                        <tr style="display:flex;  width:1500px;" class="mt-5">
+                           <td>2.</td>
+                            <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="shipname_2" id="shipname_2" readonly readonly>
+                            </td>
+                            <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="berth_2" id="berth_2" readonly readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="details_2" id="details_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="schedule_2" id="schedule_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="departure_2" id="departure_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="onsite_2" id="onsite_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="start_2" id="start_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="end_2" id="end_2" readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="arrival_2" id="arrival_2" readonly readonly>
+                            </td>
+                            <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="usage_2" id="usage_2"  readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="partner_2" id="partner_2" readonly readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="certificate_2" id="certificate_2" readonly readonly>
+                            </td>
+                        </tr>
+                        <tr style="display:flex;  width:1500px;" class="mt-5">
+                          <td>3.</td>
+                            <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="shipname_3" id="shipname_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="berth_3" id="berth_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="details_3" id="details_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="schedule_3" id="schedule_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="departure_3" id="departure_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="onsite_3" id="onsite_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="start_3" id="start_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="end_3" id="end_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="arrival_3" id="arrival_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="time" name="usage_3" id="usage_3"  readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="partner_3" id="partner_3" readonly readonly readonly>
+                            </td>
+                            <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                              <input style="width: 100%;" type="text" name="certificate_3" id="certificate_3" readonly readonly readonly>
+                            </td>
+                          </tr>
+                          <tr style="display:flex;  width:1500px;" class="mt-5">
+                            <td>4.</td>
+                              <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="text" name="shipname_4" id="shipname_4" readonly>
+                              </td>
+                              <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="text" name="berth_4" id="berth_4" readonly>
+                              </td>
+                              <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="text" name="details_4" id="details_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="schedule_4" id="schedule_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="departure_4" id="departure_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="onsite_4" id="onsite_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="start_4" id="start_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="end_4" id="end_4" readonly>
+                              </td>
+                              <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="arrival_4" id="arrival_4" readonly>
+                              </td>
+                              <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="time" name="usage_4" id="usage_4"  readonly>
+                              </td>
+                              <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="text" name="partner_4" id="partner_4" readonly>
+                              </td>
+                              <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                <input style="width: 100%;" type="text" name="certificate_4" id="certificate_4" readonly>
+                              </td>
+                            </tr>
+                            <tr style="display:flex;  width:1500px;" class="mt-5">
+                              <td>5.</td>
+                                <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="text" name="shipname_5" id="shipname_5" readonly>
+                                </td>
+                                <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="text" name="berth_5" id="berth_5">
+                                </td>
+                                <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="text" name="details_5" id="details_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="schedule_5" id="schedule_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="departure_5" id="departure_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="onsite_5" id="onsite_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="start_5" id="start_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="end_5" id="end_5" readonly>
+                                </td>
+                                <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="arrival_5" id="arrival_5" readonly>
+                                </td>
+                                <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="time" name="usage_5" id="usage_5"  readonly>
+                                </td>
+                                <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="text" name="partner_5" id="partner_5" readonly>
+                                </td>
+                                <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                  <input style="width: 100%;" type="text" name="certificate_5" id="certificate_5" readonly>
+                                </td>
+                              </tr>
+                              <tr style="display:flex;  width:1500px;" class="mt-5">
+                                <td>6.</td>
+                                  <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="text" name="shipname_6" id="shipname_6" readonly>
+                                  </td>
+                                  <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="text" name="berth_6" id="berth_6" readonly>
+                                  </td>
+                                  <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="text" name="details_6" id="details_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="schedule_6" id="schedule_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="departure_6" id="departure_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="onsite_6" id="onsite_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="start_6" id="start_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="end_6" id="end_6" readonly>
+                                  </td>
+                                  <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="arrival_6" id="arrival_6" readonly>
+                                  </td>
+                                  <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="time" name="usage_6" id="usage_6"  readonly>
+                                  </td>
+                                  <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="text" name="partner_6" id="partner_6" readonly>
+                                  </td>
+                                  <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                    <input style="width: 100%;" type="text" name="certificate_6" id="certificate_6" readonly>
+                                  </td>
+                                </tr>
+                                <tr style="display:flex;  width:1500px;" class="mt-5 mb-5">
+                                  <td>7.</td>
+                                    <td style="width:19%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="text" name="shipname_7" id="shipname_7" readonly>
+                                    </td>
+                                    <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="text" name="berth_7" id="berth_7" readonly>
+                                    </td>
+                                    <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="text" name="details_7" id="details_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="schedule_7" id="schedule_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="departure_7" id="departure_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="onsite_7" id="onsite_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="start_7" id="start_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="end_7" id="end_7" readonly>
+                                    </td>
+                                    <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="arrival_7" id="arrival_7" readonly>
+                                    </td>
+                                    <td style="width:7%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="time" name="usage_7" id="usage_7"  readonly>
+                                    </td>
+                                    <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="text" name="partner_7" id="partner_7" readonly>
+                                    </td>
+                                    <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
+                                      <input style="width: 100%;" type="text" name="certificate_7" id="certificate_7" readonly>
+                                    </td>
+                                  </tr>
+                      </tbody>
+                  </table>
+                 </div>
+              </div>
+              <div class="underline">
+                <label class="ml-20 underline" for="opening">開局時間:</label>
+                <input class="w-32 underline" type="time"  name="opening" id="opening" readonly>
+              </div>
+              <div class=" mt-5  underline">
+                <label class="ml-20" for="closed">閉局時間:</label>
+                <input class="w-32" type="time"  name="closed" id="closed" readonly>
+              </div>
+</div>
+
+<div id="report_list"  class="content" style="display: none;">
+    <!-- 作成済みリストの内容 -->
+    <p>ここに作成済みリストの内容を表示</p>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // 月は0から始まるので+1
+        const yyyy = today.getFullYear();
+
+        // 今日の日付をYYYY-MM-DD形式で設定
+        const todayFormatted = `${yyyy}-${mm}-${dd}`;
+
+        // min（1か月前）とmax（1か月後）の日付を計算
+        const lastMonth = new Date(today.setMonth(today.getMonth() - 1));
+        const nextMonth = new Date(today.setMonth(today.getMonth() + 2)); // 今日から2か月後（-1+2）
+
+        const minDate = `${lastMonth.getFullYear()}-${String(lastMonth.getMonth() + 1).padStart(2, '0')}-${String(lastMonth.getDate()).padStart(2, '0')}`;
+        const maxDate = `${nextMonth.getFullYear()}-${String(nextMonth.getMonth() + 1).padStart(2, '0')}-${String(nextMonth.getDate()).padStart(2, '0')}`;
+
+        // input要素に属性を設定
+        document.getElementById('date').value = todayFormatted;
+        document.getElementById('date').min = minDate;
+        document.getElementById('date').max = maxDate;
+		    updateWeekday();
+
+        function updateWeekday() {
+            const dateInput = document.getElementById('date');
+            const weekdayInput = document.getElementById('weekday');
+            const days = ['日', '月', '火', '水', '木', '金', '土'];
+
+            if (dateInput.value) {
+                const selectedDate = new Date(dateInput.value);
+                const weekday = days[selectedDate.getDay()];
+                weekdayInput.value = weekday ; // 日本語で曜日を設定
+            } else {
+                weekdayInput.value = ''; // 日付が選択されていない場合は空にする
+            }
+        }
+
+        // captain.txt から船長リストをドロップダウンリストへ
+        fetch('/static/captain.txt')
+        .then(response => response.text())
+        .then(text => {
+          const names = text.split('\n'); // 改行で分割して各名前を取得
+          const select = document.getElementById('person');
+          
+          names.forEach(name => {
+            const trimmedName = name.trim(); // 余分な空白を削除
+            if (trimmedName) { // 名前が空でない場合のみ追加
+              const option = new Option(trimmedName, trimmedName);
+              select.appendChild(option);
+            }
+          });
+        })
+        .catch(error => console.error('Error loading the names:', error));
+
+        $(document).ready(function() {
+            // ページ読み込み時にデフォルトタブをアクティブにする
+           changeTab('make_report', 'tab-make');
+       });
+        
+       function changeTab(tabId, tabElementId) {
+          // すべてのタブからアクティブスタイルを削除し、関連するコンテンツを非表示にする
+          $('.content').hide();  // contentクラスを持つすべての要素を非表示にする
+          $('.tab a').removeClass('bg-white').addClass('bg-slate-300');
+
+          // クリックされたタブにアクティブスタイルを適用し、関連するコンテンツを表示
+          $(`#${tabElementId} a`).removeClass('bg-slate-300').addClass('bg-white');
+          $(`#${tabId}`).show();
+
+
+          // 特定のタブ（例えば「作成済みリスト」）がクリックされた場合にのみ、追加のアクションを実行
+          if (tabId === 'report_list') {
+              $.ajax({
+                  url: '/get_reports',
+                  type: 'GET',  // ここではGETリクエストを想定しています
+                  success: function(response) {
+                      // レスポンスに基づいてリストを更新
+                      $('#report_list').empty();  // 既存のリストをクリア
+                      response.forEach(function(report) {
+                          $('#report_list').append(`<li class="mb-1 ml-10">
+                          <a class="report-item text-blue-500 hover:text-blue-700" data-filename="${report}">${report}</a></li>`);  // リストを更新
+                      });
+                  },
+                  error: function() {
+                      $('#report_list').html('<p>リストの取得に失敗しました。</p>');
+                    }
+                });
+            }
+        }
+        $(document).ready(function() {
+            // 動的に追加される要素に対してイベントハンドラを設定
+            $('#report_list').on('dblclick', '.report-item', function() {
+                var filename = $(this).data('filename');  // データ属性からファイル名を取得
+                window.location.href = `/edit/${filename}`;  // 該当のファイルを編集するページへリダイレクト
+            });
+        });
+
+        document.getElementById('myForm').addEventListener('keydown', function(event) {
+            if (event.target.tagName === 'INPUT' && event.key === 'Enter') {
+                event.preventDefault(); // Enterキーのデフォルトの挙動を無効にする
+                // 次の要素にフォーカスを移動
+                const formElements = Array.from(this.elements);
+                const index = formElements.indexOf(event.target);
+                const nextElement = formElements[index + 1];
+                if (nextElement) {
+                    nextElement.focus();
+                }
+            }
+        });
+        
+
+</script>
+
+</body>
+</html>
