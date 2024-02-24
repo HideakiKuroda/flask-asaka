@@ -2,6 +2,10 @@ from flask import Flask, request, request,flash, redirect, url_for
 from openpyxl import load_workbook
 from flask import session
 import os
+import win32com.client as win32
+import pythoncom
+import logging
+from datetime import datetime, timedelta
 
 #app.py で form_dataに格納されたデータをdata としてExcelファイルに書き込む
 def edit_excel(data):
@@ -38,17 +42,8 @@ def edit_excel(data):
         sheet[f'N{row-1}'] = work_detail.get('partner')
         row += 2  # 次の入力行を設定（一行飛ばし）
 
-    # パートナー情報の書き込み
-    # row = 7  # 開始行（パートナー情報はN列に入力）
-    # for work_detail in data['work_details']:
-    #     if row > 19:
-    #         break
-    #     sheet[f'N{row}'] = work_detail.get('partner')
-    #     row += 2  # 次の入力行を設定（一行飛ばし）
-
-    # 変更を保存
     book.save(exfilename)
-
+    
     return f'Excel ファイル {exfilename} に書き込みが完了しました.'
 
 #Excelファイルに書き込まれたデータを読み込む
@@ -109,17 +104,95 @@ def generate_new_filename(base_path):
 
     return new_file_path
 
-def save_template_as_new_file(date, template_path):
-    # テンプレートファイルを読み込む
-    book = load_workbook(template_path)
+def print_excel_file(file_path):
+    # Excelアプリケーションを開始
+    pythoncom.CoInitialize()
+
+    try:
+        # Excelアプリケーションを開始
+        excel = win32.gencache.EnsureDispatch('Excel.Application')
+        #相対パスを絶対パスに変換（Excelでファイルを読み込む場合は必要）
+        absolute_path = os.path.abspath(file_path)
+        # ファイルを開く（Excelアプリケーションは非表示）
+        excel.Visible = False
+        workbook = excel.Workbooks.Open(absolute_path)
+        
+        try:
+            # アクティブなシートを印刷（既定のプリンターを使用）
+            excel.ActiveSheet.PrintOut()
+        finally:
+            # ワークブックを閉じる（変更を保存せず）
+            workbook.Close(SaveChanges=False)
+    finally:
+        # Excelアプリケーションを終了
+        excel.Quit()
+        # COMライブラリの使用を終了（重要）
+        pythoncom.CoUninitialize()
+
+# Excelファイルを更新する関数
+def update_overtime_in_excel(file_path):
+    # Excelファイルを開く
+    book = load_workbook(file_path)
     sheet = book.active
     
-    # 特定のセルから情報を取得する（例: O3セルから作業場所を取得）
-    work_location = sheet['O3'].value  # 作業場所等が記されていると仮定
+    # 就業時間帯の定義
+    work_periods = [
+        (datetime.strptime('06:00', '%H:%M'), datetime.strptime('10:00', '%H:%M')),
+        (datetime.strptime('15:00', '%H:%M'), datetime.strptime('19:00', '%H:%M'))
+    ]
+
+    # 対象の行リスト
+    rows = [8, 10, 12, 14, 16, 18, 20]
+    tt_overtime  = timedelta()
     
-    # 新しいファイル名を生成（例: "2023-01-01_東京工場_作業日報.xlsx"）
-    new_file_name = f"{date}_{work_location}_作業日報.xlsx"
-    
-    # 新しいファイル名でテンプレートを保存
-    book.save(new_file_name)
-    return new_file_name  # 生成された新しいファイル名を返す
+    for row in rows:
+        start = sheet[f'H{row}'].value
+        end = sheet[f'L{row}'].value
+
+        if not start or not end:
+            continue  # 空のセルはスキップ
+
+        start_time = datetime.strptime(start, '%H:%M')
+        end_time = datetime.strptime(end, '%H:%M')
+        overtime = timedelta()
+        
+        # 作業時間が就業時間帯の間に完全にある場合、直接時間外労働として計算
+        in_between = True
+        for work_start, work_end in work_periods:
+            if start_time < work_end and end_time > work_start:
+                in_between = False
+                # 作業開始が就業開始前、または作業終了が就業終了後の場合
+                if start_time < work_start:
+                    overtime += work_start - start_time
+                if end_time > work_end:
+                    overtime += end_time - work_end
+                start_time = max(start_time, work_end)
+            elif start_time >= work_end:
+                continue
+            elif end_time <= work_start:
+                break
+
+        if in_between:
+            overtime += end_time - start_time
+        tt_overtime += overtime
+        overtime_minutes = overtime.total_seconds() / 60
+        overtime_formatted = minutes_to_hours_and_minutes(overtime_minutes)
+        sheet[f'T{row}'].value = overtime_formatted
+        
+    tt_overtime_minutes = tt_overtime.total_seconds() / 60
+    tt= minutes_to_hours_and_minutes(tt_overtime_minutes)
+    row =23
+    sheet[f'T{row}'].value = tt  
+
+    book.save(file_path)
+
+# 分を時間と分に変換する関数
+def minutes_to_hours_and_minutes(minutes):
+    hours = minutes // 60
+    minutes = minutes % 60
+    return f'{int(hours):02d}:{int(minutes):02d}'
+
+logging.basicConfig(filename='app.log', level=logging.INFO, 
+                    format='%(asctime)s %(levelname)s:%(message)s')
+# 実際にファイルを更新する場合はこの関数を呼び出します（ファイルパスを適切に設定してください）
+# update_overtime_in_excel('your_excel_file.xlsx')

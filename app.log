@@ -1,23 +1,51 @@
-2024-02-20 18:24:14,636 INFO:[{"shipname": "MMM", "berth": "P-6", "details": "KK", "schedule": "06:00", "departure": "06:10", "onsite": "06:40", "start": "07:00", "end": "07:40", "arrival": "08:00", "usage": null, "certificate": "k8", "partner": "20"}, {"shipname": "CCC", "berth": "\u662d\u548c", "details": "BB", "schedule": "09:00", "departure": "09:30", "onsite": "09:20", "start": "09:50", "end": "10:30", "arrival": "10:50", "usage": null, "certificate": "H7", "partner": "12"}, {"shipname": "VVVVV", "berth": "V-6", "details": "CC", "schedule": "12:00", "departure": "12:20", "onsite": "12:40", "start": "13:00", "end": "13:40", "arrival": "14:00", "usage": null, "certificate": "B5", "partner": "13"}, {"shipname": "SSSS", "berth": "PX", "details": "DD", "schedule": "15:30", "departure": "15:30", "onsite": "15:50", "start": "16:30", "end": "17:10", "arrival": "17:30", "usage": null, "certificate": "D8", "partner": null}]
-2024-02-20 18:24:14,665 INFO:127.0.0.1 - - [20/Feb/2024 18:24:14] "GET /edit/2024-02-18u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ.xlsx HTTP/1.1" 200 -
-2024-02-20 18:33:54,554 INFO:127.0.0.1 - - [20/Feb/2024 18:33:54] "GET /get_reports HTTP/1.1" 200 -
-2024-02-20 18:33:57,606 INFO:[{"shipname": "MMM", "berth": "P-6", "details": "KK", "schedule": "06:00", "departure": "06:10", "onsite": "06:40", "start": "07:00", "end": "07:40", "arrival": "08:00", "usage": null, "certificate": "k8", "partner": "20"}, {"shipname": "CCC", "berth": "\u662d\u548c", "details": "BB", "schedule": "09:00", "departure": "09:30", "onsite": "09:20", "start": "09:50", "end": "10:30", "arrival": "10:50", "usage": null, "certificate": "H7", "partner": "12"}, {"shipname": "VVVVV", "berth": "V-6", "details": "CC", "schedule": "12:00", "departure": "12:20", "onsite": "12:40", "start": "13:00", "end": "13:40", "arrival": "14:00", "usage": null, "certificate": "B5", "partner": "13"}, {"shipname": "SSSS", "berth": "PX", "details": "DD", "schedule": "15:30", "departure": "15:30", "onsite": "15:50", "start": "16:30", "end": "17:10", "arrival": "17:30", "usage": null, "certificate": "D8", "partner": null}]
-2024-02-20 18:33:57,659 INFO:127.0.0.1 - - [20/Feb/2024 18:33:57] "GET /edit/2024-02-18u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ.xlsx HTTP/1.1" 200 -
-2024-02-20 18:33:57,756 INFO:127.0.0.1 - - [20/Feb/2024 18:33:57] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
-2024-02-20 18:45:40,429 INFO:127.0.0.1 - - [20/Feb/2024 18:45:40] "GET /get_reports HTTP/1.1" 200 -
-2024-02-20 18:45:41,963 INFO:[{"shipname": "MMM", "berth": "P-6", "details": "KK", "schedule": "06:00", "departure": "06:10", "onsite": "06:40", "start": "07:00", "end": "07:40", "arrival": "08:00", "usage": null, "certificate": "k8", "partner": "20"}, {"shipname": "CCC", "berth": "\u662d\u548c", "details": "BB", "schedule": "09:00", "departure": "09:30", "onsite": "09:20", "start": "09:50", "end": "10:30", "arrival": "10:50", "usage": null, "certificate": "H7", "partner": "12"}, {"shipname": "VVVVV", "berth": "V-6", "details": "CC", "schedule": "12:00", "departure": "12:20", "onsite": "12:40", "start": "13:00", "end": "13:40", "arrival": "14:00", "usage": null, "certificate": "B5", "partner": "13"}, {"shipname": "SSSS", "berth": "PX", "details": "DD", "schedule": "15:30", "departure": "15:30", "onsite": "15:50", "start": "16:30", "end": "17:10", "arrival": "17:30", "usage": null, "certificate": "D8", "partner": null}]
-2024-02-20 18:45:42,004 INFO:127.0.0.1 - - [20/Feb/2024 18:45:42] "GET /edit/2024-02-18u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ.xlsx HTTP/1.1" 200 -
-2024-02-20 18:45:42,196 INFO:127.0.0.1 - - [20/Feb/2024 18:45:42] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
-2024-02-20 18:47:14,580 INFO:127.0.0.1 - - [20/Feb/2024 18:47:14] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
-2024-02-20 18:47:14,634 INFO:127.0.0.1 - - [20/Feb/2024 18:47:14] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
-2024-02-20 18:47:14,634 INFO:127.0.0.1 - - [20/Feb/2024 18:47:14] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
-2024-02-20 18:47:14,650 INFO:127.0.0.1 - - [20/Feb/2024 18:47:14] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
-2024-02-20 18:48:25,341 INFO:127.0.0.1 - - [20/Feb/2024 18:48:25] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
-2024-02-20 18:48:25,383 INFO:127.0.0.1 - - [20/Feb/2024 18:48:25] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
-2024-02-20 18:48:25,386 INFO:127.0.0.1 - - [20/Feb/2024 18:48:25] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
-2024-02-20 18:48:25,399 INFO:127.0.0.1 - - [20/Feb/2024 18:48:25] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
-2024-02-20 18:48:32,024 INFO:127.0.0.1 - - [20/Feb/2024 18:48:32] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
-2024-02-20 18:48:32,066 INFO:127.0.0.1 - - [20/Feb/2024 18:48:32] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
-2024-02-20 18:48:32,068 INFO:127.0.0.1 - - [20/Feb/2024 18:48:32] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
-2024-02-20 18:48:32,079 INFO:127.0.0.1 - - [20/Feb/2024 18:48:32] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
-2024-02-20 18:49:51,377 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 15:58:31,553 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 15:58:31,607 INFO: * Restarting with stat
+2024-02-24 15:58:32,141 WARNING: * Debugger is active!
+2024-02-24 15:58:32,141 INFO: * Debugger PIN: 598-399-392
+2024-02-24 15:59:08,287 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 15:59:08,338 INFO: * Restarting with stat
+2024-02-24 15:59:08,866 WARNING: * Debugger is active!
+2024-02-24 15:59:08,870 INFO: * Debugger PIN: 598-399-392
+2024-02-24 15:59:13,678 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "[35m[1mGET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(4).xlsx HTTP/1.1[0m" 500 -
+2024-02-24 15:59:13,716 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(4).xlsx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-02-24 15:59:13,726 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(4).xlsx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-02-24 15:59:13,741 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(4).xlsx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-02-24 15:59:41,020 INFO:127.0.0.1 - - [24/Feb/2024 15:59:41] "GET / HTTP/1.1" 200 -
+2024-02-24 15:59:41,135 INFO:127.0.0.1 - - [24/Feb/2024 15:59:41] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 15:59:42,722 INFO:127.0.0.1 - - [24/Feb/2024 15:59:42] "GET /get_reports HTTP/1.1" 200 -
+2024-02-24 15:59:45,400 INFO:127.0.0.1 - - [24/Feb/2024 15:59:45] "GET /edit/2024-02-21u‚ ‚³‚©ŠÛv“–’¼[ì‹Æ“ú•ñ.xlsx HTTP/1.1" 200 -
+2024-02-24 15:59:45,490 INFO:127.0.0.1 - - [24/Feb/2024 15:59:45] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:00:15,161 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 16:00:15,220 INFO: * Restarting with stat
+2024-02-24 16:00:15,689 WARNING: * Debugger is active!
+2024-02-24 16:00:15,692 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:00:24,574 INFO:127.0.0.1 - - [24/Feb/2024 16:00:24] "GET / HTTP/1.1" 200 -
+2024-02-24 16:00:24,920 INFO:127.0.0.1 - - [24/Feb/2024 16:00:24] "GET /static/captain.txt HTTP/1.1" 200 -
+2024-02-24 16:00:29,404 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "[32mPOST /create_report HTTP/1.1[0m" 302 -
+2024-02-24 16:00:29,427 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:00:29,511 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:00:36,455 INFO:127.0.0.1 - - [24/Feb/2024 16:00:36] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:00:36,532 INFO:127.0.0.1 - - [24/Feb/2024 16:00:36] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:01:51,092 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 16:01:51,143 INFO: * Restarting with stat
+2024-02-24 16:01:51,622 WARNING: * Debugger is active!
+2024-02-24 16:01:51,622 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:06:46,871 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 16:06:46,926 INFO: * Restarting with stat
+2024-02-24 16:06:47,421 WARNING: * Debugger is active!
+2024-02-24 16:06:47,425 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:13,541 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 16:07:13,583 INFO: * Restarting with stat
+2024-02-24 16:07:14,065 WARNING: * Debugger is active!
+2024-02-24 16:07:14,069 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:15,085 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ƒhƒLƒ…ƒƒ“ƒg\\šF‚ ‚³‚©ŠÛ\\attendance_management\\app.py', reloading
+2024-02-24 16:07:15,148 INFO: * Restarting with stat
+2024-02-24 16:07:15,670 WARNING: * Debugger is active!
+2024-02-24 16:07:15,675 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:34,906 INFO:127.0.0.1 - - [24/Feb/2024 16:07:34] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:07:42,379 INFO:127.0.0.1 - - [24/Feb/2024 16:07:42] "GET / HTTP/1.1" 200 -
+2024-02-24 16:07:42,490 INFO:127.0.0.1 - - [24/Feb/2024 16:07:42] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:07:47,934 INFO:127.0.0.1 - - [24/Feb/2024 16:07:47] "GET /get_reports HTTP/1.1" 200 -
+2024-02-24 16:07:50,368 INFO:127.0.0.1 - - [24/Feb/2024 16:07:50] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:07:58,372 INFO:127.0.0.1 - - [24/Feb/2024 16:07:58] "[32mPOST /create_report HTTP/1.1[0m" 302 -
+2024-02-24 16:07:58,372 INFO:127.0.0.1 - - [24/Feb/2024 16:07:58] "GET /edit/2024-02-24u‚ ‚³‚©ŠÛv“ú‹Î[ì‹Æ“ú•ñ(2).xlsx HTTP/1.1" 200 -

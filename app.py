@@ -1,13 +1,15 @@
 from flask import Flask, request, render_template, request, redirect, url_for, flash, session, jsonify
 from openpyxl import load_workbook
 import os
-from utilities_1 import edit_excel, intake_from_exl, generate_new_filename
+from utilities_1 import edit_excel, intake_from_exl, generate_new_filename,print_excel_file,update_overtime_in_excel
 import logging
 import json
+from pathlib import Path
 
 app = Flask(__name__)
 app.secret_key = 'secret_key8902083508'
 
+#最初の画面を開く
 @app.route('/', methods=['GET', 'POST'])
 def index():
     message = "「年月日」と「勤務」を入力して作成ボタンを押してください。"
@@ -15,6 +17,7 @@ def index():
     # templatesフォルダ内のindex.htmlをレンダリングして返す
     return render_template("index.html", message=message, file_created=file_created)
 
+#テンプレートからnew_filenameを作成して保存する
 @app.route('/create_report', methods=['GET', 'POST'])
 def create_report():
 	session['date'] = request.form['date']
@@ -43,6 +46,7 @@ def create_report():
     
 	return redirect(url_for('edit_report', filename=new_filename))
 
+#new_filenameで保存されたファイルの編集画面
 @app.route('/edit/<filename>', methods=['GET', 'POST'])
 def edit_report(filename):
     if 'file_created' in session:
@@ -56,6 +60,9 @@ def edit_report(filename):
         new_filename = session.get('filename')
         session.pop('file_created', None) 
         # return redirect(url_for('index'))  # セッションにデータがなければリダイレクト
+        with open('./static/captain.txt', 'r', encoding='utf-8') as file:
+            people = [line.strip() for line in file if line.strip()]
+            # logging.info(people)
         return render_template('edit_report.html', date=date,people=people, category=category, weekday=weekday, 
                             selected_person=selected_person, message=message, file_created=file_created,new_filename=new_filename)
     else:
@@ -74,11 +81,11 @@ def edit_report(filename):
         session['filename'] = new_filename 
         # logging.info(work_details_json)
         # captain.txt から船長リストを作成
+        with open('./static/captain.txt', 'r', encoding='utf-8') as file:
+            people = [line.strip() for line in file if line.strip()]
         # return redirect(url_for('index'))  # セッションにデータがなければリダイレクト
-        return render_template('edit_report.html', date=date,people=people, category=category, weekday=weekday, opening = opening, closed = closed,
+        return render_template('edit_report.html', date=date, people=people, category=category, weekday=weekday, opening = opening, closed = closed,
                                 selected_person=selected_person, message=message, file_created=file_created,new_filename=new_filename,work_details_json=work_details_json)
-with open('./static/captain.txt', 'r', encoding='utf-8') as file:
-    people = [line.strip() for line in file if line.strip()]
 
 # 入力データをexcelファイルに書き込みするためform_dataに格納
 @app.route('/register', methods=['POST'])
@@ -112,8 +119,16 @@ def file_register():
     session['form_data'] = form_data    
     result = edit_excel(form_data)
     flash(result)
+    filename=session.get('filename')
+    pass_filename = os.path.join('dailyWorkReports',filename)
+    # logging.info(pass_filename)
+    #時間外の計算
+    update_overtime_in_excel(pass_filename)
+    #同時に印刷も行う
+    print_excel_file(pass_filename)
     return redirect(url_for('edit_report', filename=session.get('filename')))
 
+#作成されたファイルの一覧を取得する
 @app.route('/get_reports')
 def get_reports():
     reports_dir = 'dailyWorkReports'
@@ -121,8 +136,8 @@ def get_reports():
     # 必要に応じて、ファイルのみをリストアップするフィルタリングを行う
     return jsonify(reports)
 
-# logging.basicConfig(filename='app.log', level=logging.INFO, 
-#                     format='%(asctime)s %(levelname)s:%(message)s')
+logging.basicConfig(filename='app.log', level=logging.INFO, 
+                    format='%(asctime)s %(levelname)s:%(message)s')
 
 if __name__ == '__main__':
     app.run(debug=True)

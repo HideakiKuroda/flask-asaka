@@ -470,22 +470,6 @@
         updateArrival('departure_7', 'arrival_7', 'usage_7');
       }
     
-      fetch('/static/captain.txt')
-      .then(response => response.text())
-      .then(text => {
-        const names = text.split('\n'); // 改行で分割して各名前を取得
-        const select = document.getElementById('person');
-        
-        names.forEach(name => {
-          const trimmedName = name.trim(); // 余分な空白を削除
-          if (trimmedName) { // 名前が空でない場合のみ追加
-            const option = new Option(trimmedName, trimmedName);
-            select.appendChild(option);
-          }
-        });
-      })
-      .catch(error => console.error('Error loading the names:', error));
-      
     document.addEventListener('DOMContentLoaded', function () {
     // JSONデータが正しく渡されたかチェック
       const workDetailsJson = '{{ work_details_json | safe }}';
