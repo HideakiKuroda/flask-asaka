@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
+	<a class="ml-8 mt-2 font-bold text-blue-500  hover:text-blue-700" href="/">＜＜＜戻る</a>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
@@ -46,8 +47,8 @@
               <label for="category">勤務:</label>
               <select class="w-20 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" name="category" id="category">
                 <option value="日勤" {% if category == "日勤" %}selected{% endif %}>日勤</option>
-  				      <option value="当直" {% if category == "当直" %}selected{% endif %}>当直</option>
- 				        <option value="当直明け" {% if category == "当直明け" %}selected{% endif %}>当直明け</option>
+  				<option value="当直" {% if category == "当直" %}selected{% endif %}>当直</option>
+ 				<option value="当直明け" {% if category == "当直明け" %}selected{% endif %}>当直明け</option>
               </select>
             </div>
             <div>85</div>
@@ -62,7 +63,8 @@
               </select>
             </div>
             
-			      <button type="submit" class="mt-2 ml-20 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">登録・印刷</button> 
+			      <button type="submit" class="mt-2 ml-20 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">登録</button> 
+			      <button type="button" onclick="submitFormForPrinting()" class="mt-2 ml-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-blue-800">印刷</button> 
 		      </div>
         </div> 
 		    <div class="container mx-auto mt-5 ml-5">
@@ -96,8 +98,16 @@
                             <input style="width: 100%;" type="text" name="berth_1" id="berth_1" value="{{ berth_1 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_1" id="details_1" value="{{ details_1 }}">
-                          </td>
+							<select style="width: 100%;" name="details_1" id="details_1" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							</select>
+							<input type="text" name="other_details_1" id="other_details_1" value="{{ details_1 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_1" id="schedule_1" value="{{ schedule_1 }}">
                           </td>
@@ -135,8 +145,16 @@
                             <input style="width: 100%;" type="text" name="berth_2" id="berth_2" value="{{ berth_2 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_2" id="details_2" value="{{ details_2 }}">
-                          </td>
+							<select style="width: 100%;" name="details_2" id="details_2" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_2" id="other_details_2" value="{{ details_2 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_2" id="schedule_2" value="{{ schedule_2 }}">
                           </td>
@@ -174,8 +192,16 @@
                             <input style="width: 100%;" type="text" name="berth_3" id="berth_3" value="{{ berth_3 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_3" id="details_3" value="{{ details_3 }}">
-                          </td>
+							<select style="width: 100%;" name="details_3" id="details_3" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_3" id="other_details_3" value="{{ details_3 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_3" id="schedule_3" value="{{ schedule_3 }}">
                           </td>
@@ -213,8 +239,16 @@
                             <input style="width: 100%;" type="text" name="berth_4" id="berth_4" value="{{ berth_4 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_4" id="details_4" value="{{ details_4 }}">
-                          </td>
+							<select style="width: 100%;" name="details_4" id="details_4" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_4" id="other_details_4" value="{{ details_4 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_4" id="schedule_4" value="{{ schedule_4 }}">
                           </td>
@@ -252,8 +286,16 @@
                             <input style="width: 100%;" type="text" name="berth_5" id="berth_5" value="{{ berth_5 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_5" id="details_5" value="{{ details_5 }}">
-                          </td>
+							<select style="width: 100%;" name="details_5" id="details_5" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_5" id="other_details_5" value="{{ details_5 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_5" id="schedule_5" value="{{ schedule_5 }}">
                           </td>
@@ -291,8 +333,16 @@
                             <input style="width: 100%;" type="text" name="berth_6" id="berth_6" value="{{ berth_6 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_6" id="details_6" value="{{ details_6 }}">
-                          </td>
+							<select style="width: 100%;" name="details_6" id="details_6" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_6" id="other_details_6" value="{{ details_6 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_6" id="schedule_6" value="{{ schedule_6 }}">
                           </td>
@@ -330,8 +380,16 @@
                             <input style="width: 100%;" type="text" name="berth_7" id="berth_7" value="{{ berth_7 }}">
                           </td>
                           <td style="width:5%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
-                            <input style="width: 100%;" type="text" name="details_7" id="details_7" value="{{ details_7 }}">
-                          </td>
+							<select style="width: 100%;" name="details_7" id="details_7" onchange="toggleInputVisibility(this)">
+								<option value=""></option>
+								<option value="入">入</option>
+								<option value="出">出</option>
+								<option value="付替">付替</option>
+								<option value="警戒">警戒</option>
+								<option value="その他">その他（入力）</option>
+							  </select>
+							<input type="text" name="other_details_7" id="other_details_7" value="{{ details_7 }}" style="width: 100%; display: none;">
+						  </td>
                           <td style="width:8%;" class="border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded">
                             <input style="width: 100%;" type="time" name="schedule_7" id="schedule_7" value="{{ schedule_7 }}">
                           </td>
@@ -363,14 +421,26 @@
                       </tbody>
                   </table>
                  </div>
-                <div class="underline">
-                  <label class="ml-20 mt--5 underline" for="opening">開局時間:</label>
-                  <input class="w-32 underline" type="time"  name="opening" id="opening" value="{{ opening }}">
-                </div>
-                <div class=" mt-5  underline">
-                  <label class="ml-20" for="closed">閉局時間:</label>
-                  <input class="w-32" type="time"  name="closed" id="closed" value="{{ closed }}">
-              </div>
+				<div class="flex flex-row justify-between"> 
+					<div>
+						<div class="underline">
+							<label class="ml-20 mt--5 underline" for="opening">開局時間:</label>
+							<input class="w-32 underline" type="time"  name="opening" id="opening" value="{{ opening }}">
+						</div>
+						<div class=" mt-5  underline">
+							<label class="ml-20" for="closed">閉局時間:</label>
+							<input class="w-32" type="time"  name="closed" id="closed" value="{{ closed }}">
+						</div>
+					</div>
+          <div class="w-1/2">
+            <label class="mt-0" for="remarks1">備考:</label>
+            <input class="w-full" type="text"  name="remarks1" id="remarks1" value="{{ remarks1 }}">
+            <input class="w-full mt-1" type="text"  name="remarks2" id="remarks2" value="{{ remarks2 }}">
+          </div>
+					<div>
+						<button type="button" onclick="submitTotallingPrint()" class="mt-2 mr-12 h-10 text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-Pink-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-Pink-600 dark:hover:bg-Pink-700 focus:outline-none dark:focus:ring-Pink-800">集計印刷</button> 
+					</div>
+				</div>
             </div>
           </div>
           </form>
@@ -482,7 +552,16 @@
               const idx = index + 1;
               document.getElementById(`shipname_${idx}`).value = detail.shipname || '';
               document.getElementById(`berth_${idx}`).value = detail.berth || '';
-              document.getElementById(`details_${idx}`).value = detail.details || '';
+			  // '出' '入' の場合は、detailsElementの値を設定
+			  if (['入', '出','付替','警戒',''].includes(detail.details)) {
+				document.getElementById(`details_${idx}`).value = detail.details || '';
+				} else {
+				// '入', '出','付替','' 以外の場合は、detailsElementを'その他'に設定し、
+				// otherDetailsElementに値を設定して表示
+				document.getElementById(`details_${idx}`).value  = 'その他';
+				document.getElementById(`details_${idx}`).style.display = 'block';
+				document.getElementById(`other_details_${idx}`).value = detail.details || '';
+				}
               document.getElementById(`schedule_${idx}`).value = detail.schedule || ''; //時間"HH:mm" 形式
               document.getElementById(`departure_${idx}`).value = detail.departure || '';//時間"HH:mm" 形式
               document.getElementById(`onsite_${idx}`).value = detail.onsite || '';//時間"HH:mm" 形式
@@ -497,19 +576,69 @@
       }
     });
 
-    document.getElementById('myForm').addEventListener('keydown', function(event) {
-        if (event.target.tagName === 'INPUT' && event.key === 'Enter') {
-            event.preventDefault(); // Enterキーのデフォルトの挙動を無効にする
-            // 次の要素にフォーカスを移動
-            const formElements = Array.from(this.elements);
-            const index = formElements.indexOf(event.target);
-            const nextElement = formElements[index + 1];
-            if (nextElement) {
-                nextElement.focus();
-            }
-        }
-    });
-        
+	document.getElementById('myForm').addEventListener('keydown', function(event) {
+		if ((event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT') && event.key === 'Enter') {
+			event.preventDefault(); // Enterキーのデフォルトの挙動を無効にする
+
+			// フォーム内の要素のリストを取得
+			const formElements = Array.from(this.elements);
+			// 現在フォーカスされている要素のインデックスを見つける
+			const currentIndex = formElements.indexOf(event.target);
+
+			// 次にフォーカスを移動する要素を探す
+			for (let i = currentIndex + 1; i < formElements.length; i++) {
+				const nextElement = formElements[i];
+				// readonlyまたはdisabled属性を持たない、かつ入力または選択が可能なフィールドにのみフォーカスを移動
+				if (!nextElement.disabled && (nextElement.tagName === 'INPUT' && !nextElement.readOnly || nextElement.tagName === 'SELECT')) {
+					nextElement.focus();
+					break; // ループを抜ける
+				}
+			}
+		}
+	});
+	
+	window.onload = function() {
+	// details_1 から details_7 までの各要素に対して処理を実行
+	for (let i = 1; i <= 7; i++) {
+		const selectElement = document.getElementById(`details_${i}`);
+		const otherInput = document.getElementById(`other_details_${i}`);
+		
+		// サーバーから受け取った値をもとに、'出' '入' 以外の場合に入力フィールドの表示状態を設定
+		if (selectElement && selectElement.value !== '出' && selectElement.value !== '入' && selectElement.value !== '付替' && selectElement.value !== '警戒' && selectElement.value !== '') {
+		otherInput.style.display = 'block';
+		} else {
+		otherInput.style.display = 'none';
+		}
+	}
+	}
+
+	function toggleInputVisibility(select) {
+	// selectのidから数字部分を抽出（例: "details_1"から"1"を取得）
+	var idNumber = select.id.match(/\d+/)[0];
+	// 対応するその他の入力欄のIDを組み立て
+	var otherInputId = "other_details_" + idNumber;
+	var otherInput = document.getElementById(otherInputId);
+
+	if (select.value === 'その他') {
+		otherInput.style.display = 'block';
+	} else {
+		otherInput.style.display = 'none';
+	}
+	}   
+	function submitFormForPrinting() {
+		var form = document.getElementById('myForm');
+		form.action = '/print_file'; // フォームのアクションを印刷用に変更
+		form.method = 'post';
+		form.submit(); // フォームを送信
+	} 
+	function submitTotallingPrint() {
+		var form = document.getElementById('myForm');
+		form.action = '/print_totalling'; // フォームのアクションを印刷用に変更
+		form.method = 'post';
+		form.submit(); // フォームを送信
+	} 
+	
+		
 </script>
 
 </body>

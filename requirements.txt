@@ -5,3 +5,5 @@ requests
 xlwings
 python-docx
 pywin32
+wxPython
+jpholiday

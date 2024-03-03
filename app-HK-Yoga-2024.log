@@ -1,0 +1,254 @@
+2024-02-24 15:58:31,553 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 15:58:31,607 INFO: * Restarting with stat
+2024-02-24 15:58:32,141 WARNING: * Debugger is active!
+2024-02-24 15:58:32,141 INFO: * Debugger PIN: 598-399-392
+2024-02-24 15:59:08,287 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 15:59:08,338 INFO: * Restarting with stat
+2024-02-24 15:59:08,866 WARNING: * Debugger is active!
+2024-02-24 15:59:08,870 INFO: * Debugger PIN: 598-399-392
+2024-02-24 15:59:13,678 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "[35m[1mGET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(4).xlsx HTTP/1.1[0m" 500 -
+2024-02-24 15:59:13,716 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(4).xlsx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-02-24 15:59:13,726 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(4).xlsx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-02-24 15:59:13,741 INFO:127.0.0.1 - - [24/Feb/2024 15:59:13] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(4).xlsx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-02-24 15:59:41,020 INFO:127.0.0.1 - - [24/Feb/2024 15:59:41] "GET / HTTP/1.1" 200 -
+2024-02-24 15:59:41,135 INFO:127.0.0.1 - - [24/Feb/2024 15:59:41] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 15:59:42,722 INFO:127.0.0.1 - - [24/Feb/2024 15:59:42] "GET /get_reports HTTP/1.1" 200 -
+2024-02-24 15:59:45,400 INFO:127.0.0.1 - - [24/Feb/2024 15:59:45] "GET /edit/2024-02-21ÅuÇ†Ç≥Ç©ä€ÅvìñíºÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 15:59:45,490 INFO:127.0.0.1 - - [24/Feb/2024 15:59:45] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:00:15,161 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 16:00:15,220 INFO: * Restarting with stat
+2024-02-24 16:00:15,689 WARNING: * Debugger is active!
+2024-02-24 16:00:15,692 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:00:24,574 INFO:127.0.0.1 - - [24/Feb/2024 16:00:24] "GET / HTTP/1.1" 200 -
+2024-02-24 16:00:24,920 INFO:127.0.0.1 - - [24/Feb/2024 16:00:24] "GET /static/captain.txt HTTP/1.1" 200 -
+2024-02-24 16:00:29,404 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "[32mPOST /create_report HTTP/1.1[0m" 302 -
+2024-02-24 16:00:29,427 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:00:29,511 INFO:127.0.0.1 - - [24/Feb/2024 16:00:29] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:00:36,455 INFO:127.0.0.1 - - [24/Feb/2024 16:00:36] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:00:36,532 INFO:127.0.0.1 - - [24/Feb/2024 16:00:36] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:01:51,092 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 16:01:51,143 INFO: * Restarting with stat
+2024-02-24 16:01:51,622 WARNING: * Debugger is active!
+2024-02-24 16:01:51,622 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:06:46,871 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 16:06:46,926 INFO: * Restarting with stat
+2024-02-24 16:06:47,421 WARNING: * Debugger is active!
+2024-02-24 16:06:47,425 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:13,541 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 16:07:13,583 INFO: * Restarting with stat
+2024-02-24 16:07:14,065 WARNING: * Debugger is active!
+2024-02-24 16:07:14,069 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:15,085 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 16:07:15,148 INFO: * Restarting with stat
+2024-02-24 16:07:15,670 WARNING: * Debugger is active!
+2024-02-24 16:07:15,675 INFO: * Debugger PIN: 598-399-392
+2024-02-24 16:07:34,906 INFO:127.0.0.1 - - [24/Feb/2024 16:07:34] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:07:42,379 INFO:127.0.0.1 - - [24/Feb/2024 16:07:42] "GET / HTTP/1.1" 200 -
+2024-02-24 16:07:42,490 INFO:127.0.0.1 - - [24/Feb/2024 16:07:42] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-24 16:07:47,934 INFO:127.0.0.1 - - [24/Feb/2024 16:07:47] "GET /get_reports HTTP/1.1" 200 -
+2024-02-24 16:07:50,368 INFO:127.0.0.1 - - [24/Feb/2024 16:07:50] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(1).xlsx HTTP/1.1" 200 -
+2024-02-24 16:07:58,372 INFO:127.0.0.1 - - [24/Feb/2024 16:07:58] "[32mPOST /create_report HTTP/1.1[0m" 302 -
+2024-02-24 16:07:58,372 INFO:127.0.0.1 - - [24/Feb/2024 16:07:58] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(2).xlsx HTTP/1.1" 200 -
+2024-02-24 17:07:30,371 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:07:30,440 INFO: * Restarting with stat
+2024-02-24 17:32:24,708 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-24 17:32:24,708 INFO:[33mPress CTRL+C to quit[0m
+2024-02-24 17:32:24,713 INFO: * Restarting with stat
+2024-02-24 17:32:25,155 WARNING: * Debugger is active!
+2024-02-24 17:32:25,165 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:32:48,105 INFO:127.0.0.1 - - [24/Feb/2024 17:32:48] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:32:48,280 INFO:127.0.0.1 - - [24/Feb/2024 17:32:48] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(2).xlsx HTTP/1.1" 200 -
+2024-02-24 17:33:28,288 INFO:127.0.0.1 - - [24/Feb/2024 17:33:28] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2024-02-24 17:33:28,320 INFO:127.0.0.1 - - [24/Feb/2024 17:33:28] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-02-24 17:33:28,322 INFO:127.0.0.1 - - [24/Feb/2024 17:33:28] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-02-24 17:33:28,337 INFO:127.0.0.1 - - [24/Feb/2024 17:33:28] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-02-24 17:34:20,867 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:34:20,995 INFO: * Restarting with stat
+2024-02-24 17:34:21,533 WARNING: * Debugger is active!
+2024-02-24 17:34:21,537 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:34:36,578 INFO:127.0.0.1 - - [24/Feb/2024 17:34:36] "GET / HTTP/1.1" 200 -
+2024-02-24 17:34:36,957 INFO:127.0.0.1 - - [24/Feb/2024 17:34:36] "GET /static/captain.txt HTTP/1.1" 200 -
+2024-02-24 17:34:37,079 INFO:127.0.0.1 - - [24/Feb/2024 17:34:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-02-24 17:34:38,518 INFO:127.0.0.1 - - [24/Feb/2024 17:34:38] "GET /get_reports HTTP/1.1" 200 -
+2024-02-24 17:34:40,515 INFO:127.0.0.1 - - [24/Feb/2024 17:34:40] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(2).xlsx HTTP/1.1" 200 -
+2024-02-24 17:34:59,558 INFO:127.0.0.1 - - [24/Feb/2024 17:34:59] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:34:59,677 INFO:127.0.0.1 - - [24/Feb/2024 17:34:59] "GET /edit/2024-02-24ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ(2).xlsx HTTP/1.1" 200 -
+2024-02-24 17:35:49,072 INFO:127.0.0.1 - - [24/Feb/2024 17:35:49] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:36:03,578 INFO:127.0.0.1 - - [24/Feb/2024 17:36:03] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:36:03,797 INFO:127.0.0.1 - - [24/Feb/2024 17:36:03] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:43:38,917 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:43:39,056 INFO: * Restarting with stat
+2024-02-24 17:43:39,575 WARNING: * Debugger is active!
+2024-02-24 17:43:39,579 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:43:45,923 INFO:127.0.0.1 - - [24/Feb/2024 17:43:45] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:43:59,358 INFO:127.0.0.1 - - [24/Feb/2024 17:43:59] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:43:59,587 INFO:127.0.0.1 - - [24/Feb/2024 17:43:59] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:44:05,734 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:44:05,821 INFO: * Restarting with stat
+2024-02-24 17:44:06,314 WARNING: * Debugger is active!
+2024-02-24 17:44:06,317 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:44:10,014 INFO:127.0.0.1 - - [24/Feb/2024 17:44:10] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:44:22,536 INFO:127.0.0.1 - - [24/Feb/2024 17:44:22] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:44:22,785 INFO:127.0.0.1 - - [24/Feb/2024 17:44:22] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:44:46,838 INFO:127.0.0.1 - - [24/Feb/2024 17:44:46] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 17:44:47,058 INFO:127.0.0.1 - - [24/Feb/2024 17:44:47] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 17:44:57,618 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:44:57,690 INFO: * Restarting with stat
+2024-02-24 17:44:58,211 WARNING: * Debugger is active!
+2024-02-24 17:44:58,211 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:45:19,342 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\utilities_1.py', reloading
+2024-02-24 17:45:19,427 INFO: * Restarting with stat
+2024-02-24 17:45:19,938 WARNING: * Debugger is active!
+2024-02-24 17:45:19,938 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:59:35,604 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 17:59:35,704 INFO: * Restarting with stat
+2024-02-24 17:59:36,195 WARNING: * Debugger is active!
+2024-02-24 17:59:36,199 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:59:37,213 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 17:59:37,270 INFO: * Restarting with stat
+2024-02-24 17:59:37,794 WARNING: * Debugger is active!
+2024-02-24 17:59:37,797 INFO: * Debugger PIN: 598-399-392
+2024-02-24 17:59:42,738 INFO:127.0.0.1 - - [24/Feb/2024 17:59:42] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:00:04,275 INFO:127.0.0.1 - - [24/Feb/2024 18:00:04] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2024-02-24 18:00:04,318 INFO:127.0.0.1 - - [24/Feb/2024 18:00:04] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-02-24 18:00:04,318 INFO:127.0.0.1 - - [24/Feb/2024 18:00:04] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-02-24 18:00:04,386 INFO:127.0.0.1 - - [24/Feb/2024 18:00:04] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-02-24 18:02:59,916 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 18:02:59,999 INFO: * Restarting with stat
+2024-02-24 18:03:00,475 WARNING: * Debugger is active!
+2024-02-24 18:03:00,479 INFO: * Debugger PIN: 598-399-392
+2024-02-24 18:03:08,750 INFO:127.0.0.1 - - [24/Feb/2024 18:03:08] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:03:11,142 INFO:127.0.0.1 - - [24/Feb/2024 18:03:11] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2024-02-24 18:03:11,161 INFO:127.0.0.1 - - [24/Feb/2024 18:03:11] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-02-24 18:03:11,161 INFO:127.0.0.1 - - [24/Feb/2024 18:03:11] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-02-24 18:03:11,176 INFO:127.0.0.1 - - [24/Feb/2024 18:03:11] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-02-24 18:08:41,417 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 18:08:41,526 INFO: * Restarting with stat
+2024-02-24 18:08:42,065 WARNING: * Debugger is active!
+2024-02-24 18:08:42,067 INFO: * Debugger PIN: 598-399-392
+2024-02-24 18:08:58,648 INFO:127.0.0.1 - - [24/Feb/2024 18:08:58] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:09:05,140 INFO:127.0.0.1 - - [24/Feb/2024 18:09:05] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:09:05,348 INFO:127.0.0.1 - - [24/Feb/2024 18:09:05] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:10:24,698 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 18:10:24,788 INFO: * Restarting with stat
+2024-02-24 18:10:25,277 WARNING: * Debugger is active!
+2024-02-24 18:10:25,281 INFO: * Debugger PIN: 598-399-392
+2024-02-24 18:10:28,084 INFO:127.0.0.1 - - [24/Feb/2024 18:10:28] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:10:28,242 INFO:127.0.0.1 - - [24/Feb/2024 18:10:28] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:11:00,842 INFO:127.0.0.1 - - [24/Feb/2024 18:11:00] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:11:01,044 INFO:127.0.0.1 - - [24/Feb/2024 18:11:01] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:14:35,795 INFO: * Detected change in 'C:\\Users\\kurod\\OneDrive - MOLGROUP.COM\\ÉhÉLÉÖÉÅÉìÉg\\ÅöÅFÇ†Ç≥Ç©ä€\\attendance_management\\app.py', reloading
+2024-02-24 18:14:35,899 INFO: * Restarting with stat
+2024-02-24 18:14:36,393 WARNING: * Debugger is active!
+2024-02-24 18:14:36,396 INFO: * Debugger PIN: 598-399-392
+2024-02-24 18:17:59,662 INFO:127.0.0.1 - - [24/Feb/2024 18:17:59] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:17:59,888 INFO:127.0.0.1 - - [24/Feb/2024 18:17:59] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:18:25,153 INFO:127.0.0.1 - - [24/Feb/2024 18:18:25] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:18:25,345 INFO:127.0.0.1 - - [24/Feb/2024 18:18:25] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:19:08,790 INFO:127.0.0.1 - - [24/Feb/2024 18:19:08] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:19:08,978 INFO:127.0.0.1 - - [24/Feb/2024 18:19:08] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:19:15,246 INFO:127.0.0.1 - - [24/Feb/2024 18:19:15] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:19:15,445 INFO:127.0.0.1 - - [24/Feb/2024 18:19:15] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-24 18:19:35,603 INFO:127.0.0.1 - - [24/Feb/2024 18:19:35] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-02-24 18:19:35,848 INFO:127.0.0.1 - - [24/Feb/2024 18:19:35] "GET /edit/2024-02-18ÅuÇ†Ç≥Ç©ä€Åvì˙ãŒÅ[çÏã∆ì˙ïÒ.xlsx HTTP/1.1" 200 -
+2024-02-28 20:29:04,461 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 20:29:04,461 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 20:29:04,466 INFO: * Restarting with stat
+2024-02-28 20:29:04,978 WARNING: * Debugger is active!
+2024-02-28 20:29:04,983 INFO: * Debugger PIN: 598-399-392
+2024-02-28 20:29:06,726 INFO:127.0.0.1 - - [28/Feb/2024 20:29:06] "GET / HTTP/1.1" 200 -
+2024-02-28 20:29:07,111 INFO:127.0.0.1 - - [28/Feb/2024 20:29:07] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:30:02,232 INFO:127.0.0.1 - - [28/Feb/2024 20:30:02] "GET / HTTP/1.1" 200 -
+2024-02-28 20:30:02,616 INFO:127.0.0.1 - - [28/Feb/2024 20:30:02] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:31:00,527 INFO:127.0.0.1 - - [28/Feb/2024 20:31:00] "GET / HTTP/1.1" 200 -
+2024-02-28 20:31:00,816 INFO:127.0.0.1 - - [28/Feb/2024 20:31:00] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:31:01,180 INFO:127.0.0.1 - - [28/Feb/2024 20:31:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-02-28 20:36:48,434 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 20:36:48,434 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 20:36:48,440 INFO: * Restarting with stat
+2024-02-28 20:36:49,119 WARNING: * Debugger is active!
+2024-02-28 20:36:49,123 INFO: * Debugger PIN: 598-399-392
+2024-02-28 20:36:52,211 INFO:127.0.0.1 - - [28/Feb/2024 20:36:52] "GET / HTTP/1.1" 200 -
+2024-02-28 20:36:52,795 INFO:127.0.0.1 - - [28/Feb/2024 20:36:52] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:37:16,263 INFO:127.0.0.1 - - [28/Feb/2024 20:37:16] "GET / HTTP/1.1" 200 -
+2024-02-28 20:37:16,495 INFO:127.0.0.1 - - [28/Feb/2024 20:37:16] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:37:17,450 INFO:127.0.0.1 - - [28/Feb/2024 20:37:17] "GET / HTTP/1.1" 200 -
+2024-02-28 20:37:17,665 INFO:127.0.0.1 - - [28/Feb/2024 20:37:17] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:47:40,664 INFO:127.0.0.1 - - [28/Feb/2024 20:47:40] "GET / HTTP/1.1" 200 -
+2024-02-28 20:47:41,126 INFO:127.0.0.1 - - [28/Feb/2024 20:47:41] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:47:44,786 INFO:127.0.0.1 - - [28/Feb/2024 20:47:44] "GET / HTTP/1.1" 200 -
+2024-02-28 20:47:45,049 INFO:127.0.0.1 - - [28/Feb/2024 20:47:45] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:47:55,305 INFO:127.0.0.1 - - [28/Feb/2024 20:47:55] "GET / HTTP/1.1" 200 -
+2024-02-28 20:47:55,516 INFO:127.0.0.1 - - [28/Feb/2024 20:47:55] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:47:56,849 INFO:127.0.0.1 - - [28/Feb/2024 20:47:56] "GET / HTTP/1.1" 200 -
+2024-02-28 20:47:57,055 INFO:127.0.0.1 - - [28/Feb/2024 20:47:57] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:47:57,859 INFO:127.0.0.1 - - [28/Feb/2024 20:47:57] "GET / HTTP/1.1" 200 -
+2024-02-28 20:47:58,059 INFO:127.0.0.1 - - [28/Feb/2024 20:47:58] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:48:00,324 INFO:127.0.0.1 - - [28/Feb/2024 20:48:00] "GET / HTTP/1.1" 200 -
+2024-02-28 20:48:00,538 INFO:127.0.0.1 - - [28/Feb/2024 20:48:00] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:48:41,934 INFO:127.0.0.1 - - [28/Feb/2024 20:48:41] "GET / HTTP/1.1" 200 -
+2024-02-28 20:48:42,153 INFO:127.0.0.1 - - [28/Feb/2024 20:48:42] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:48:43,188 INFO:127.0.0.1 - - [28/Feb/2024 20:48:43] "GET / HTTP/1.1" 200 -
+2024-02-28 20:48:43,377 INFO:127.0.0.1 - - [28/Feb/2024 20:48:43] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:48:44,280 INFO:127.0.0.1 - - [28/Feb/2024 20:48:44] "GET / HTTP/1.1" 200 -
+2024-02-28 20:48:44,493 INFO:127.0.0.1 - - [28/Feb/2024 20:48:44] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:48:47,134 INFO:127.0.0.1 - - [28/Feb/2024 20:48:47] "GET /get_reports HTTP/1.1" 200 -
+2024-02-28 20:51:38,029 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 20:51:38,029 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 20:51:38,035 INFO: * Restarting with stat
+2024-02-28 20:51:38,762 WARNING: * Debugger is active!
+2024-02-28 20:51:38,766 INFO: * Debugger PIN: 598-399-392
+2024-02-28 20:51:39,411 INFO:127.0.0.1 - - [28/Feb/2024 20:51:39] "GET / HTTP/1.1" 200 -
+2024-02-28 20:51:39,946 INFO:127.0.0.1 - - [28/Feb/2024 20:51:39] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 20:54:40,378 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 20:54:40,378 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 20:54:40,385 INFO: * Restarting with stat
+2024-02-28 20:54:41,098 WARNING: * Debugger is active!
+2024-02-28 20:54:41,103 INFO: * Debugger PIN: 598-399-392
+2024-02-28 20:54:44,101 INFO:127.0.0.1 - - [28/Feb/2024 20:54:44] "GET / HTTP/1.1" 200 -
+2024-02-28 20:54:44,722 INFO:127.0.0.1 - - [28/Feb/2024 20:54:44] "GET /static/captain.txt HTTP/1.1" 200 -
+2024-02-28 21:07:21,914 INFO:127.0.0.1 - - [28/Feb/2024 21:07:21] "GET / HTTP/1.1" 200 -
+2024-02-28 21:07:22,166 INFO:127.0.0.1 - - [28/Feb/2024 21:07:22] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:30:09,562 INFO:127.0.0.1 - - [28/Feb/2024 21:30:09] "GET / HTTP/1.1" 200 -
+2024-02-28 21:30:09,799 INFO:127.0.0.1 - - [28/Feb/2024 21:30:09] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:12,217 INFO:127.0.0.1 - - [28/Feb/2024 21:34:12] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:12,439 INFO:127.0.0.1 - - [28/Feb/2024 21:34:12] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:13,446 INFO:127.0.0.1 - - [28/Feb/2024 21:34:13] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:13,690 INFO:127.0.0.1 - - [28/Feb/2024 21:34:13] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:14,364 INFO:127.0.0.1 - - [28/Feb/2024 21:34:14] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:14,559 INFO:127.0.0.1 - - [28/Feb/2024 21:34:14] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:15,542 INFO:127.0.0.1 - - [28/Feb/2024 21:34:15] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:15,746 INFO:127.0.0.1 - - [28/Feb/2024 21:34:15] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:20,047 INFO:127.0.0.1 - - [28/Feb/2024 21:34:20] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:20,265 INFO:127.0.0.1 - - [28/Feb/2024 21:34:20] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:21,820 INFO:127.0.0.1 - - [28/Feb/2024 21:34:21] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:22,031 INFO:127.0.0.1 - - [28/Feb/2024 21:34:22] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:34:23,438 INFO:127.0.0.1 - - [28/Feb/2024 21:34:23] "GET / HTTP/1.1" 200 -
+2024-02-28 21:34:23,651 INFO:127.0.0.1 - - [28/Feb/2024 21:34:23] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:35:04,831 INFO:127.0.0.1 - - [28/Feb/2024 21:35:04] "GET / HTTP/1.1" 200 -
+2024-02-28 21:35:05,046 INFO:127.0.0.1 - - [28/Feb/2024 21:35:05] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:35:06,121 INFO:127.0.0.1 - - [28/Feb/2024 21:35:06] "GET / HTTP/1.1" 200 -
+2024-02-28 21:35:06,306 INFO:127.0.0.1 - - [28/Feb/2024 21:35:06] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:39:38,029 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 21:39:38,029 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 21:39:38,035 INFO: * Restarting with stat
+2024-02-28 21:39:38,784 WARNING: * Debugger is active!
+2024-02-28 21:39:38,789 INFO: * Debugger PIN: 598-399-392
+2024-02-28 21:39:39,421 INFO:127.0.0.1 - - [28/Feb/2024 21:39:39] "GET / HTTP/1.1" 200 -
+2024-02-28 21:39:39,854 INFO:127.0.0.1 - - [28/Feb/2024 21:39:39] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:40:16,021 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-28 21:40:16,021 INFO:[33mPress CTRL+C to quit[0m
+2024-02-28 21:40:16,027 INFO: * Restarting with stat
+2024-02-28 21:40:16,772 WARNING: * Debugger is active!
+2024-02-28 21:40:16,772 INFO: * Debugger PIN: 598-399-392
+2024-02-28 21:40:18,463 INFO:127.0.0.1 - - [28/Feb/2024 21:40:18] "GET / HTTP/1.1" 200 -
+2024-02-28 21:40:18,908 INFO:127.0.0.1 - - [28/Feb/2024 21:40:18] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -
+2024-02-28 21:40:58,101 INFO:127.0.0.1 - - [28/Feb/2024 21:40:58] "GET / HTTP/1.1" 200 -
+2024-02-28 21:40:58,451 INFO:127.0.0.1 - - [28/Feb/2024 21:40:58] "[36mGET /static/captain.txt HTTP/1.1[0m" 304 -

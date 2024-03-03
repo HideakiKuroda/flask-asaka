@@ -387,8 +387,8 @@
         const todayFormatted = `${yyyy}-${mm}-${dd}`;
 
         // min（1か月前）とmax（1か月後）の日付を計算
-        const lastMonth = new Date(today.setMonth(today.getMonth() - 1));
-        const nextMonth = new Date(today.setMonth(today.getMonth() + 2)); // 今日から2か月後（-1+2）
+        const lastMonth = new Date(today.setMonth(today.getMonth() - 2));
+        const nextMonth = new Date(today.setMonth(today.getMonth() + 3)); // 今日から2か月後（-1+2）
 
         const minDate = `${lastMonth.getFullYear()}-${String(lastMonth.getMonth() + 1).padStart(2, '0')}-${String(lastMonth.getDate()).padStart(2, '0')}`;
         const maxDate = `${nextMonth.getFullYear()}-${String(nextMonth.getMonth() + 1).padStart(2, '0')}-${String(nextMonth.getDate()).padStart(2, '0')}`;
