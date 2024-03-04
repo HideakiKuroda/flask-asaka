@@ -45,10 +45,11 @@
             </div>
             <div>
               <label for="category">勤務:</label>
-              <select class="w-20 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" name="category" id="category">
+              <select class="w-24 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" name="category" id="category">
                 <option value="日勤" {% if category == "日勤" %}selected{% endif %}>日勤</option>
-  				<option value="当直" {% if category == "当直" %}selected{% endif %}>当直</option>
- 				<option value="当直明け" {% if category == "当直明け" %}selected{% endif %}>当直明け</option>
+  				      <option value="当直" {% if category == "当直" %}selected{% endif %}>当直</option>
+ 				        <option value="当直明け" {% if category == "当直明け" %}selected{% endif %}>当直明け</option>
+ 				        <option value="臨時出勤" {% if category == "臨時出勤" %}selected{% endif %}>臨時出勤</option>
               </select>
             </div>
             <div>85</div>

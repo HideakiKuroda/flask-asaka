@@ -24,8 +24,8 @@ def edit_excel(data):
     sheet['Q4'] = data['person']
     sheet['C22'] = data['opening']
     sheet['C23'] = data['closed']
-    sheet['F22'] = data['remarks1']
-    sheet['F23'] = data['remarks2']
+    sheet['F22'] = data.get('remarks1', '')  # 'remarks1'がない場合は空文字を設定
+    sheet['F23'] = data.get('remarks2', '')  # 'remarks2'がない場合は空文字を設定
 
     # 船舶詳細データの書き込み
     row = 8  # 開始行
@@ -66,8 +66,8 @@ def intake_from_exl(filename):
     'person' : sheet['Q4'].value,
     'opening': sheet['C22'].value,
     'closed' : sheet['C23'].value,
-    'remarks1' : sheet['F22'].value,
-    'remarks2' : sheet['F23'].value,
+    'remarks1' : sheet['F22'].value if sheet['F22'].value is not None else '',
+    'remarks2' : sheet['F23'].value if sheet['F23'].value is not None else '',
     'work_details' :[]
     }
     row = 8
@@ -187,12 +187,22 @@ def dayshift_overtime_to_excel(file_path):
             usetime = timedelta(hours=hours, minutes=minutes)
             # tt_usetimeに加算
             tt_usetime += usetime
+        #前の作業の終了時間を取得、最初の行の時は’’
         start = sheet[f'H{row}'].value
         end = sheet[f'L{row}'].value
         if not start or not end:
             continue  # 空のセルはスキップ
-        start_time = datetime.strptime(format_time_to_str(start), '%H:%M')
+        start_time = datetime.strptime(format_time_to_str(start), '%H:%M') #format_time_to_str(
         end_time = datetime.strptime(format_time_to_str(end), '%H:%M')
+        if row >= 10:
+            pre_end = sheet[f'L{row - 2}'].value
+            if pre_end:  # pre_endが空でない場合
+                pre_end_time_str = format_time_to_str(pre_end)
+                pre_end_time = get_datetime_object(pre_end_time_str)
+                # start_timeが未定義の場合、比較はスキップされるべきか、
+                # または適切な初期値を設定する必要がある
+                if start_time.time() < pre_end_time.time():
+                    start_time = pre_end_time  # 作業開始時間を更新
         early_time = datetime.strptime('05:00', '%H:%M')
         mid_time = datetime.strptime('22:00', '%H:%M')
         overtime = timedelta()
@@ -250,13 +260,13 @@ def dayshift_overtime_to_excel(file_path):
     tt_earlytime_minutes = tt_earlytime.total_seconds() / 60
     tt_early = minutes_to_hours_and_minutes(tt_earlytime_minutes) 
     sheet['V11'].value = tt_early
-    tt_usetime_sec = tt_usetime.total_seconds() / 60
     #日勤時間の午前午後に4:00 4:00 を入力
     sheet['V6'].value = time(hour=4, minute=0)   
     sheet['V7'].value = time(hour=4, minute=0)  
     sheet['V13'].value = minutes_to_hours_and_minutes(tt_overtime_minutes + tt_midtime_minutes +  tt_earlytime_minutes +240 + 240)  #合計時間（全て）  
     sheet['V15'].value = minutes_to_hours_and_minutes(tt_overtime_minutes) #普通の時間外合計時間
     sheet['V16'].value =minutes_to_hours_and_minutes(tt_midtime_minutes +  tt_earlytime_minutes) #深夜の時間外合計時間
+    tt_usetime_sec = tt_usetime.total_seconds() / 60
     sheet['V19'].value = minutes_to_hours_and_minutes(tt_usetime_sec) #普通の時間外合計時間
     book.save(file_path)
 
@@ -274,13 +284,32 @@ def onduty_overtime_to_excel(file_path):
     rows = [8, 10, 12, 14, 16, 18, 20]
     tt_overtime  = timedelta()
     tt_earlytime = timedelta()
+    tt_usetime = timedelta()
     for row in rows:
+        usem = sheet[f'M{row}'].value
+        if usem:  # usemがNoneまたは空文字列でないことを確認
+            formatted_time = format_time_to_str(usem)
+            # 時間をtimedeltaオブジェクトに変換
+            hours, minutes = map(int, formatted_time.split(':'))
+            usetime = timedelta(hours=hours, minutes=minutes)
+            # tt_usetimeに加算
+            tt_usetime += usetime
+        #前の作業の終了時間を取得、最初の行の時は’’
         start = sheet[f'H{row}'].value
         end = sheet[f'L{row}'].value
         if not start or not end:
             continue  # 空のセルはスキップ
         start_time = datetime.strptime(format_time_to_str(start), '%H:%M') #format_time_to_str(
         end_time = datetime.strptime(format_time_to_str(end), '%H:%M')
+        if row >= 10:
+            pre_end = sheet[f'L{row - 2}'].value
+            if pre_end:  # pre_endが空でない場合
+                pre_end_time_str = format_time_to_str(pre_end)
+                pre_end_time = get_datetime_object(pre_end_time_str)
+                # start_timeが未定義の場合、比較はスキップされるべきか、
+                # または適切な初期値を設定する必要がある
+                if start_time.time() < pre_end_time.time():
+                    start_time = pre_end_time  # 作業開始時間を更新
         early_time = datetime.strptime('05:00', '%H:%M')
         overtime = timedelta()
         early_time_work = timedelta()
@@ -333,6 +362,8 @@ def onduty_overtime_to_excel(file_path):
     sheet['V13'].value = minutes_to_hours_and_minutes(tt_overtime_minutes + tt_earlytime_minutes + 300 +240 + 240)  #合計時間（全て）  
     sheet['V15'].value = minutes_to_hours_and_minutes(tt_overtime_minutes) #普通の時間外合計時間
     sheet['V16'].value =minutes_to_hours_and_minutes(tt_earlytime_minutes) #早朝の時間外合計時間
+    tt_usetime_sec = tt_usetime.total_seconds() / 60
+    sheet['V19'].value = minutes_to_hours_and_minutes(tt_usetime_sec) #普通の時間外合計時間
 
 	# C23が空欄の場合、V9に3:00、V10に2:00を設定
     if sheet['C23'].value is None:
@@ -354,6 +385,17 @@ def endofshift_overtime_to_excel(file_path):
     mid_work = timedelta()
     dawn_work = timedelta()
     tt_dawn_time = timedelta()
+    tt_usetime = timedelta()
+    rows = [8, 10, 12, 14, 16, 18, 20]
+    for row in rows:
+        usem = sheet[f'M{row}'].value
+        if usem:  # usemがNoneまたは空文字列でないことを確認
+            formatted_time = format_time_to_str(usem)
+            # 時間をtimedeltaオブジェクトに変換
+            hours, minutes = map(int, formatted_time.split(':'))
+            usetime = timedelta(hours=hours, minutes=minutes)
+            # tt_usetimeに加算
+            tt_usetime += usetime
     if closed_time < base_time: #閉局時間が5:00より早い場合
         # '5:00'から'closed'の差を計算し、V11に設定
         delta = closed_time - mid_time #'closed'までが深夜残業
@@ -383,6 +425,8 @@ def endofshift_overtime_to_excel(file_path):
     tt_dawn_time = dawn_work + mid_work
     total_minutes = tt_dawn_time.total_seconds() / 60
     sheet['V13'].value = minutes_to_hours_and_minutes(total_minutes)
+    tt_usetime_sec = tt_usetime.total_seconds() / 60
+    sheet['V19'].value = minutes_to_hours_and_minutes(tt_usetime_sec) #普通の時間外合計時間
     book.save(file_path)
 
 # 分を時間と分に変換する関数
@@ -437,6 +481,9 @@ def format_time_to_str(end):
         # endが文字列でもdatetime.timeオブジェクトでもない場合
         raise TypeError("Unsupported type for 'end'")
 
+def get_datetime_object(time_str):
+    """文字列からdatetime.datetimeオブジェクトを生成する"""
+    return datetime.strptime(time_str, '%H:%M')
 
 logging.basicConfig(filename='app.log', level=logging.INFO, 
                     format='%(asctime)s %(levelname)s:%(message)s')

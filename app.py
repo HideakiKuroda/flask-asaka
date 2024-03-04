@@ -163,7 +163,7 @@ def file_register():
 	closed = form_data['closed']
 	opening = form_data['opening']
 	# logger.info('closed: %s', closed)   
-	if form_data['category'] == "日勤":
+	if form_data['category'] in ["日勤", "臨時出勤"]:
 		if not closed or not opening:
 			flash('開局時間と閉局時間を入力してください')
 			return redirect(url_for('edit_report', filename=filename))
