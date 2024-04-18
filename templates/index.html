@@ -371,9 +371,13 @@
                 <input class="w-32" type="time"  name="closed" id="closed" readonly>
               </div>
 </div>
-
-<div id="report_list"  class="content" style="display: none;">
-    <!-- 作成済みリストの内容 -->
+<!-- 月選択のためのセクション -->
+<div class="month-selector">
+  <label for="month" class="ml-10">作成済み作業日報:</label>
+  <input type="month" name="month" id="month" class="ml-10 w-32 border-2 bg-white py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 rounded" >
+</div>
+<div id="report_list" class="content" style="display: none;">
+        <!-- 作成済みリストの内容 -->
     <p>ここに作成済みリストの内容を表示</p>
 </div>
 
@@ -436,35 +440,80 @@
            changeTab('make_report', 'tab-make');
        });
         
-       function changeTab(tabId, tabElementId) {
-          // すべてのタブからアクティブスタイルを削除し、関連するコンテンツを非表示にする
-          $('.content').hide();  // contentクラスを持つすべての要素を非表示にする
-          $('.tab a').removeClass('bg-white').addClass('bg-slate-300');
+        function changeTab(tabId, tabElementId) {
+            // すべてのタブからアクティブスタイルを削除し、関連するコンテンツを非表示にする
+            $('.content').hide(); 
+            $('.tab a').removeClass('bg-white').addClass('bg-slate-300');
 
-          // クリックされたタブにアクティブスタイルを適用し、関連するコンテンツを表示
-          $(`#${tabElementId} a`).removeClass('bg-slate-300').addClass('bg-white');
-          $(`#${tabId}`).show();
+            // クリックされたタブにアクティブスタイルを適用し、関連するコンテンツを表示
+            $(`#${tabElementId} a`).removeClass('bg-slate-300').addClass('bg-white');
+            $(`#${tabId}`).show();
 
+            // 特定のタブがクリックされた場合にのみ、追加のアクションを実行
+            if (tabId === 'report_list') {
+              const today = new Date();
+              const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1);
+              const year = lastMonth.getFullYear();
+              const month = lastMonth.getMonth() + 1; // getMonth()は0から始まるため、+1する
+              const lastMonthValue = `${year}-${month.toString().padStart(2, '0')}`; // MM形式にするためにpadStartを使用
+              console.log(lastMonthValue);
+            // 初期表示時に先月の報告書を表示
+              updateReportsForMonth(lastMonthValue);
 
-          // 特定のタブ（例えば「作成済みリスト」）がクリックされた場合にのみ、追加のアクションを実行
-          if (tabId === 'report_list') {
-              $.ajax({
-                  url: '/get_reports',
-                  type: 'GET',  // ここではGETリクエストを想定しています
-                  success: function(response) {
-                      // レスポンスに基づいてリストを更新
-                      $('#report_list').empty();  // 既存のリストをクリア
-                      response.forEach(function(report) {
-                          $('#report_list').append(`<li class="mb-1 ml-10">
-                          <a class="report-item text-blue-500 hover:text-blue-700" data-filename="${report}">${report}</a></li>`);  // リストを更新
-                      });
-                  },
-                  error: function() {
-                      $('#report_list').html('<p>リストの取得に失敗しました。</p>');
+              $('.month-selector').show();
+                $.ajax({
+                    url: '/get_reports',
+                    type: 'GET',
+                    success: function(response) {
+                        updateReportList(response);
+                    },
+                    error: function() {
+                        $('#report_list').html('<p>リストの取得に失敗しました。</p>');
                     }
                 });
+            }else{
+              $('.month-selector').hide(); 
             }
         }
+        // ページが読み込まれたときに実行　デフォルト値を先月の月に
+        $(document).ready(function() {
+            // 先月の年月をデフォルト値として設定
+
+            // 月のinput値が変更されたときに報告書のリストを更新
+            $('#month').change(function() {
+                const selectedMonth = $(this).val();
+                // console.log(selectedMonth);
+                updateReportsForMonth(selectedMonth);
+
+            });
+           
+        });
+        function updateReportsForMonth(month) {
+          // console.log(month);
+            $.ajax({
+                url: '/get_reports',
+                type: 'GET',
+                data: {month: month},
+                success: function(response) {
+                    updateReportList(response);
+                },
+                error: function() {
+                    $('#report_list').html('<p>リストの取得に失敗しました。</p>');
+                }
+            });
+        }
+        // レスポンスに基づいてリストを更新する関数
+        function updateReportList(reports) {
+          // console.log(reports);
+            $('#report_list').empty();
+            reports.forEach(function(report) {
+                const listItem = $('<li class="mb-1 ml-10"></li>');
+                const link = $('<a></a>').addClass('report-item text-blue-500 hover:text-blue-700').text(report).attr('data-filename', report);
+                listItem.append(link);
+                $('#report_list').append(listItem);
+            });
+        }
+
         $(document).ready(function() {
             // 動的に追加される要素に対してイベントハンドラを設定
             $('#report_list').on('dblclick', '.report-item', function() {

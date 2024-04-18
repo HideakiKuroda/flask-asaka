@@ -8,6 +8,13 @@ import json
 from pathlib import Path
 
 app = Flask(__name__)
+
+# セキュアなCookieの設定（HTTPSが必要）
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_SAMESITE='None',
+)
+
 app.secret_key = 'secret_key8902083508'
 
 # ロガーの設定
@@ -209,9 +216,21 @@ def print_totalling():
 @app.route('/get_reports')
 def get_reports():
     reports_dir = 'dailyWorkReports'
-    reports = os.listdir(reports_dir)  # ディレクトリ内のファイルとフォルダのリストを取得
-    # 必要に応じて、ファイルのみをリストアップするフィルタリングを行う
-    return jsonify(reports)
+    selected_month = request.args.get('month')  # クエリパラメータから月を取得
+
+    try:
+        if not os.path.exists(reports_dir):
+            return jsonify({"error": "Reports directory not found"}), 404
+
+        # 指定された月に作成された報告書のみをフィルタリング
+        reports = [
+            f for f in os.listdir(reports_dir)
+            if os.path.isfile(os.path.join(reports_dir, f)) and f.startswith(selected_month)
+        ]
+        return jsonify(reports)
+    except Exception as e:
+        return jsonify({"error": "An error occurred"}), 500
+
 
 def custom_time_serializer(obj):
     """カスタムシリアライザ関数。datetime.timeオブジェクトを文字列に変換します。"""

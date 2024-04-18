@@ -1,7 +1,7 @@
 Flask
 pandas
-openpyxl
-requests
+openpyxl  #Excelの操作
+requests　#WebスクレイピングやWebAPIを使いWebからデータを取得したいときに使う
 xlwings
 python-docx
 pywin32

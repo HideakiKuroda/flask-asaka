@@ -498,13 +498,14 @@
 
       const departureTime = new Date(`1970-01-01T${departureInput.value}:00`);
       const arrivalTime = new Date(`1970-01-01T${arrivalInput.value}:00`);
-      const diff = arrivalTime - departureTime;
-
+      let diff = arrivalTime - departureTime;
+      // console.log(diff);
       // 経過時間が負の値になる場合、エラーメッセージを表示
       if (diff < 0) {
-        alert('終了時刻は出発時刻よりも後に設定してください。');
-        usageInput.value = ''; 
-        return;
+        diff += 86400000; // 24時間 = 86400000ミリ秒を加算
+        // alert('終了時刻が出発時間より早い時間となっていますが、よろしいですか？');
+        // return; // 早期リターン
+        // console.log(diff);
       }
 
         const hours = Math.floor(diff / 3600000);

@@ -5,7 +5,7 @@ import os
 import win32com.client as win32
 import pythoncom
 import logging
-from datetime import datetime, timedelta,time
+from datetime import datetime, timedelta,time 
 
 #app.py で form_dataに格納されたデータをdata としてExcelファイルに書き込む
 def edit_excel(data):
@@ -49,6 +49,11 @@ def edit_excel(data):
     book.save(exfilename)
     
     return f'Excel ファイル {exfilename} に書き込みが完了しました.'
+
+# 分を時間と分に変換する関数
+def minutes_to_hours_and_minutes(minutes):
+    hours, minutes = divmod(minutes, 60)
+    return time(hour=int(hours), minute=int(minutes))
 
 #Excelファイルに書き込まれたデータを読み込む
 def intake_from_exl(filename):
@@ -285,6 +290,7 @@ def onduty_overtime_to_excel(file_path):
     tt_overtime  = timedelta()
     tt_earlytime = timedelta()
     tt_usetime = timedelta()
+    midnight = datetime.strptime('00:00', '%H:%M')
     for row in rows:
         usem = sheet[f'M{row}'].value
         if usem:  # usemがNoneまたは空文字列でないことを確認
@@ -301,6 +307,10 @@ def onduty_overtime_to_excel(file_path):
             continue  # 空のセルはスキップ
         start_time = datetime.strptime(format_time_to_str(start), '%H:%M') #format_time_to_str(
         end_time = datetime.strptime(format_time_to_str(end), '%H:%M')
+        time_since_midnight = timedelta()
+        if end_time < start_time:
+            end_time += timedelta(hours=24)
+            time_since_midnight = end_time - datetime.strptime('23:59', '%H:%M')
         if row >= 10:
             pre_end = sheet[f'L{row - 2}'].value
             if pre_end:  # pre_endが空でない場合
@@ -340,7 +350,9 @@ def onduty_overtime_to_excel(file_path):
                     break
             if in_between: #勤務時間帯が定時の時間に掛かっていない場合はすべてが時間外
                 overtime += end_time - start_time
-        overtime_minutes = overtime.total_seconds() / 60
+        if time_since_midnight:
+            overtime -= time_since_midnight        
+        overtime_minutes = overtime.total_seconds() / 60    
         overtime_formatted = minutes_to_hours_and_minutes(overtime_minutes)
         sheet[f'T{row}'].value = overtime_formatted
         #全ての時間外から深夜と早朝の時間外を引くことで普通時間外の合計
@@ -429,11 +441,6 @@ def endofshift_overtime_to_excel(file_path):
     sheet['V19'].value = minutes_to_hours_and_minutes(tt_usetime_sec) #普通の時間外合計時間
     book.save(file_path)
 
-# 分を時間と分に変換する関数
-def minutes_to_hours_and_minutes(minutes):
-    hours, minutes = divmod(minutes, 60)
-    return time(hour=int(hours), minute=int(minutes))
-
 def calculate_work_hours(start_time_str, end_time_str):
     """
     作業開始時間と終了時間を受け取り、総作業時間を計算する。
@@ -447,7 +454,7 @@ def calculate_work_hours(start_time_str, end_time_str):
     start_time = datetime.strptime(start_time_str, format_str)
     
     # 終了時間が24:00から24:59の場合、それを翌日の時間として扱う
-    if end_time_str.startswith('24:'):
+    if end_time_str.startswith('00:'):
         # "24:XX"を"00:XX"として扱い、さらに1日を加算
         adjusted_end_time_str = '00:' + end_time_str.split(':')[1]
         end_time = datetime.strptime(adjusted_end_time_str, format_str) + timedelta(days=1)
